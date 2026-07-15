@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@theme {
+  --animate-spin-slow: spin 3s linear infinite;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));

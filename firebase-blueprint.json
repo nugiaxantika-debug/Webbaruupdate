@@ -1,0 +1,42 @@
+{
+  "entities": {
+    "Config": {
+      "title": "Config",
+      "description": "Global website configuration.",
+      "type": "object",
+      "properties": {}
+    },
+    "User": {
+      "title": "User",
+      "description": "User account info.",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "password": { "type": "string" }
+      },
+      "required": ["email", "password"]
+    },
+    "ActiveBots": {
+      "title": "ActiveBots",
+      "description": "Currently active bot emails.",
+      "type": "object",
+      "properties": {
+        "emails": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  },
+  "firestore": {
+    "/settings/{docId}": {
+      "schema": { "$ref": "#/entities/Config" },
+      "description": "System settings and configuration"
+    },
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "Registered users"
+    },
+    "/system/{docId}": {
+      "schema": { "$ref": "#/entities/ActiveBots" },
+      "description": "System state"
+    }
+  }
+}
